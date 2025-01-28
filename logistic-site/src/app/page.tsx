@@ -122,6 +122,7 @@ export default function LogisticsApp() {
             },
           ].map((service, index) => (
             <div key={index} className="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+              /* eslint-disable @next/next/no-img-element */
               <img
                 src={service.icon}
                 alt={service.title}
@@ -854,6 +855,7 @@ export default function LogisticsApp() {
           {isSidebarOpen && (
             <nav className="bg-gray-800 text-white p-4 transition-transform duration-300" style={{ width: "240px" }}>
               <button onClick={() => setIsSidebarOpen(false)} className="bg-red-500 text-white px-2 py-1 mb-4 rounded">
+              /* eslint-disable @next/next/no-img-element */
                <img src="/Images/MenuIcon.jpeg" alt="menu bar" height={10} width={30}></img>
               </button>
               <h2 className="text-lg font-bold mb-4">TRL Logistics</h2>
@@ -899,6 +901,7 @@ export default function LogisticsApp() {
           <div className={`flex-1 p-6 transition-all duration-300 ${ isSidebarOpen ? "ml-[240px]" : "ml-0"}`}>
             {!isSidebarOpen && (
               <button onClick={() => setIsSidebarOpen(true)} className="bg-blue-500 text-white px-2 py-1 rounded">
+              /* eslint-disable @next/next/no-img-element */
               <img src="/Images/MenuIcon.jpeg" alt="menu bar" height={10} width={30}></img>
               </button>
             )}
