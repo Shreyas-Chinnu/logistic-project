@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+interface Order {
+  id: number;
+  pickup: string;
+  destination: string;
+  weight: number;
+  status: string;
+}
+
 export default function LogisticsApp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
@@ -16,19 +24,11 @@ export default function LogisticsApp() {
   const [trackingID, setTrackingID] = useState(""); // ID for tracking input
   const [trackingOrder, setTrackingOrder] = useState<number | null>(null); // Order being tracked
   const [error, setError] = useState<string | null>(null); // Error message for tracking
-  const [currentOrder, setCurrentOrder] = useState<Order | null>(null);
 
 
       function handleDelete(orderId: number): void {
         setOrders((prevOrders) => prevOrders.filter((order) => order.id !== orderId));
         }
-  interface Order {
-    id: number;
-    pickup: string;
-    destination: string;
-    weight: number;
-    status: string;
-  }
 
   interface OrderData {
     pickup: string;
@@ -939,3 +939,13 @@ export default function LogisticsApp() {
                   </div>
                 );
 };
+function setCurrentOrder(order: { id: number; pickup: string; destination: string; weight: number; status: string; }) {
+  // Assuming setCurrentOrder is used to set the current order for editing
+  setOrders((prevOrders) =>
+    prevOrders.map((o) => (o.id === order.id ? order : o))
+  );
+}
+const setOrders = (updateFunction: (prevOrders: Order[]) => Order[]) => {
+  setOrders((prevOrders) => updateFunction(prevOrders));
+};
+
